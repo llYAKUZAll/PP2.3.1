@@ -1,12 +1,11 @@
 package web.model;
 
 import lombok.ToString;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 
-@Component
 @Table(name = "users")
 @Entity(name = User.PERSISTANCE_NAME)
 public class User {
@@ -74,5 +73,18 @@ public class User {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id && age == user.age && Objects.equals(name, user.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
