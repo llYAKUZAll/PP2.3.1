@@ -1,6 +1,5 @@
 package web.model;
 
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -12,16 +11,15 @@ public class User {
 
     static final String PERSISTANCE_NAME = "User";
 
-    @ToString.Include
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @ToString.Include
     @Column(name = "name")
     private String name;
 
-    @ToString.Include
+
     @Column(name = "age")
     private byte age;
 
